@@ -49,11 +49,12 @@ app.get('/hello', (req, res) => {
 
 
 app.get('/random', (req, res) => {
-  console.log('GET /random');
   let random = Math.random(); 
   if (random < 0.2) {
+    console.error('GET /random', 'Error');
     res.status(500).send({ error: 'Something failed!', value: '-', failedValue: random })
   } else {
+    console.log('GET /random');
     setTimeout(() => {
       res.status(200).send({ error: 'Everything is OK!', value: random })
     }, 5000 * Math.random());
