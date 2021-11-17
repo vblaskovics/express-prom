@@ -47,12 +47,15 @@ app.get('/hello', (req, res) => {
   res.json({ message: `Hello, ${name}!` });
 });
 
+
 app.get('/random', (req, res) => {
-  if (Math.random < 0.2) {
-    res.status(500).send({ error: 'Something failed!' })
+  console.log('GET /random');
+  let random = Math.random(); 
+  if (random < 0.2) {
+    res.status(500).send({ error: 'Something failed!', value: '-', failedValue: random })
   } else {
     setTimeout(() => {
-      res.status(200).send({ error: 'Everything is OK!' })
+      res.status(200).send({ error: 'Everything is OK!', value: random })
     }, 5000 * Math.random());
   }
 })

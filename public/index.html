@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Express - Prometheus Example</title>
-</head>
-<body>
-  <h1>Express - Prometheus Example</h1>
-  <p> Randomly calling the server (between 0-2 sec)</p>
-  <script>
-
-    (function loop() {
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Express - Prometheus Example</title>
+  </head>
+  <body>
+    <h1>Express - Prometheus Example</h1>
+    <p>Randomly calling the server (between 0-2 sec) for a random value</p>
+    <p>Last response message: <span id="message"></span></p>
+    <p>Last random value: <span id="random"></span></p>
+    <script>
+      (function loop() {
         var rand = Math.round(Math.random() * (2000 - 500)) + 500;
-        setTimeout(function() {
-                location.reload();
-                loop();  
+        setTimeout(function () {
+          console.log('fetch random');
+          fetch("/random")
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById('message').innerHTML = data.error;
+              document.getElementById('random').innerHTML = data.value;
+            });
+          loop();
         }, rand);
-    }());
-  </script>
-</bod
-
-setInterval()y>
+      })();
+    </script>
+  </body>
 </html>
