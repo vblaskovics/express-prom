@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express - Prometheus Example</title>
+</head>
+<body>
+  <h1>Express - Prometheus Example</h1>
+  <p> Randomly calling the server (between 1-3 sec)</p>
+  <p>Last API call: <span id="lastcall"></span></p>
+  <p>Last status code: <span id="status"></span></p>
+  <p>Last message: <span id="message"></span></p>
+  <script>
+    let lastcall = document.getElementById('lastcall');
+    let status = document.getElementById('status');
+    let message = document.getElementById('message');
+
+    (function loop() {
+        var rand = Math.round(Math.random() * (2000 - 500)) + 500;
+        setTimeout(function() {
+                location.reload();
+                loop();  
+        }, rand);
+    }());
+  </script>
+</bod
+
+setInterval()y>
+</html>
